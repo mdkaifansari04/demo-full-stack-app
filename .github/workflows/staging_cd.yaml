@@ -16,10 +16,13 @@ jobs:
                 USERNAME: ${{secrets.USERNAME}}
 
             - run : |
+                mkdir .ssh
+                cd .shh
                 echo "$PRIVATE_KEY" > private_key
                 chmod 600 private_key
+                echo ls
 
-                ssh  -o StrictHostKeyChecking=no -i private_key $USERNAME@$HOST_IP '
+                ssh -i private_key $USERNAME@$HOST_IP '
 
                     cd /demo-full-stack-app
                     git pull origin main &&
