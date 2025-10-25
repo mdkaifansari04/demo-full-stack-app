@@ -19,7 +19,7 @@ jobs:
                     echo "${{secrets.SSH_SECRET}}" > private_key.pem
                     chmod 700 private_key.pem
 
-                    ssh -i private_key.pem ubuntu@20.244.44.37 -t '
+                    ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@20.244.44.37 -t '
 
                         cd /demo-full-stack-app
                         git pull origin main &&
