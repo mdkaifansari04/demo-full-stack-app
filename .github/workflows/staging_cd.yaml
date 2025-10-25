@@ -1,0 +1,34 @@
+name : deploy to the staging 
+on: 
+    push:
+        branches: [main]
+
+jobs:
+    redeploy_everything: 
+        runs-on: ubuntu-latest
+        name: redeploy_everything_on_main
+
+        steps:
+            - uses: actions/checkout@v3
+              env :
+                PRIVATE_KEY: ${{secrets.SSH_SECRET}}
+                HOST_IP: ${{secrets.HOST_IP}}
+                USERNAME: ${{secrets.USERNAME}}
+
+            - run : |
+                echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+                ssh -o StrictHostKeyChecking=no -i private_key $USERNAME@$HOST_IP '
+
+                    cd /demo-full-stack-app
+                    git pull origin main &&
+                    pnpm install  &&
+                    pnpm run build &&
+
+                    pm2 start fe-server &&
+                    pm2 start ws-server &&
+                    pm2 start http-server
+                '
+
+
+
+
