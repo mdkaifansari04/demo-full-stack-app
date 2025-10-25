@@ -17,7 +17,7 @@ jobs:
 
             - run : |
                 echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-                ssh -o StrictHostKeyChecking=no -i private_key $USERNAME@$HOST_IP '
+                ssh -i -o StrictHostKeyChecking=no private_key $USERNAME@$HOST_IP '
 
                     cd /demo-full-stack-app
                     git pull origin main &&
