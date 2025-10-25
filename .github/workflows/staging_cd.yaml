@@ -21,7 +21,7 @@ jobs:
 
                     ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@20.244.44.37 -t '
 
-                        cd /demo-full-stack-app
+                        cd ./demo-full-stack-app &&
                         git pull origin main &&
                         pnpm install  &&
                         pnpm run build &&
