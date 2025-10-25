@@ -1,39 +1,7 @@
-events {
-    # Event directives...
-}
-
 http {
-	server {
-        listen 80;
-        server_name staging.week-25-ws.100xdevs.com;
-
-        location / {
-            proxy_pass http://localhost:3001;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
-	}
-
     server {
         listen 80;
-        server_name staging.week-25-http.100xdevs.com;
-
-        location / {
-            proxy_pass http://localhost:3002;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
-	}
-
-    server {
-        listen 80;
-        server_name staging.week-25-fe.100xdevs.com;
+        server_name staging.demo-fe.mdkaif.me www.staging.demo-fe.mdkaif.me;
 
         location / {
             proxy_pass http://localhost:3000;
@@ -43,5 +11,32 @@ http {
             proxy_set_header Host $host;
             proxy_cache_bypass $http_upgrade;
         }
-	}
+    }
+
+    server {
+        listen 80;
+        server_name staging.demo-http.mdkaif.me www.staging.demo-http.mdkaif.me;
+
+        location / {
+            proxy_pass http://localhost:3002;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+    server {
+        listen 80;
+        server_name staging.demo-ws.mdkaif.me www.staging.demo-ws.mdkaif.me;
+
+        location / {
+            proxy_pass http://localhost:3001;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
 }
