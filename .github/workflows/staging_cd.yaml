@@ -16,12 +16,9 @@ jobs:
                 USERNAME: ${{secrets.USERNAME}}
 
             - run : |
-                mkdir .ssh
-                cd .shh
                 echo "$PRIVATE_KEY" > private_key
-                chmod 600 private_key
-                echo ls
-
+                chmod 700 private_key
+                
                 ssh -i private_key $USERNAME@$HOST_IP '
 
                     cd /demo-full-stack-app
