@@ -25,6 +25,8 @@ jobs:
                         git pull origin main &&
                         pnpm install  &&
                         pnpm run build &&
+                        
+                        export PATH=/home/ubuntu/.nvm/versions/node/v24.10.0/bin && 
 
                         pm2 start fe-app &&
                         pm2 start ws-app &&
