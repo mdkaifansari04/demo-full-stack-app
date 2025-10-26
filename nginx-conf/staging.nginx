@@ -1,7 +1,11 @@
+events { 
+    #will add events
+}
+ 
 http {
     server {
         listen 80;
-        server_name staging.demo-fe.mdkaif.me www.staging.demo-fe.mdkaif.me;
+        server_name staging.fe.mdkaif.me;
 
         location / {
             proxy_pass http://localhost:3000;
@@ -15,7 +19,7 @@ http {
 
     server {
         listen 80;
-        server_name staging.demo-http.mdkaif.me www.staging.demo-http.mdkaif.me;
+        server_name staging.http.mdkaif.me;
 
         location / {
             proxy_pass http://localhost:3002;
@@ -28,7 +32,7 @@ http {
     }
     server {
         listen 80;
-        server_name staging.demo-ws.mdkaif.me www.staging.demo-ws.mdkaif.me;
+        server_name staging.ws.mdkaif.me;
 
         location / {
             proxy_pass http://localhost:3001;
