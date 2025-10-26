@@ -6,10 +6,9 @@ export default async function Home() {
 
   return (
     <div>
-      First name haha: 
-      {user?.username}
-      password: 
-      {user?.password}
+      <h1 style={{color: "red", fontSize: "2rem"}}>Hello and Welcome to the new Pages</h1>
+      <p style={{color: "blue"}}>First name haha: {user?.username}</p>
+      <p style={{color: "blue"}}>Password: {user?.password}</p>
     </div>
   );
 }
